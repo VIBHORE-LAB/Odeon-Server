@@ -1,0 +1,776 @@
+{
+  "users": [
+    {
+      "display_name": "Onlyvibhore",
+      "image": "",
+      "topTracks": [
+        {
+          "id": "6nRGPf5tpeJtKpXZO5cgIT",
+          "name": "Paro",
+          "artists": [
+            "Aditya Rikhari",
+            "UNPLG'd"
+          ],
+          "album": "Paro",
+          "image": "https://i.scdn.co/image/ab67616d0000b2735fe9856a449aab589c06b6c8"
+        },
+        {
+          "id": "02BcXEH1zJYbXSabPtNlKf",
+          "name": "Lose My Mind (feat. Doja Cat) [From F1® The Movie]",
+          "artists": [
+            "Don Toliver",
+            "Doja Cat",
+            "F1 The Album"
+          ],
+          "album": "Lose My Mind (feat. Doja Cat) [From F1® The Movie]",
+          "image": "https://i.scdn.co/image/ab67616d0000b273bed9c7b9e33025a81d4d02e4"
+        },
+        {
+          "id": "7wdzLe2Gsx1RGqbvYZHASz",
+          "name": "i",
+          "artists": [
+            "Kendrick Lamar"
+          ],
+          "album": "i",
+          "image": "https://i.scdn.co/image/ab67616d0000b2736d89f336fbfbdf2089701da0"
+        },
+        {
+          "id": "7wGgYAOMhhRObOGdWlJ9Hi",
+          "name": "Departure Lane",
+          "artists": [
+            "Talha Anjum",
+            "Umair"
+          ],
+          "album": "My Terrible Mind",
+          "image": "https://i.scdn.co/image/ab67616d0000b2739c1830c96a63b06c943519e1"
+        },
+        {
+          "id": "0eLtIxPRNJfsmehITZ1qaJ",
+          "name": "Sahiba",
+          "artists": [
+            "Aditya Rikhari"
+          ],
+          "album": "Sahiba",
+          "image": "https://i.scdn.co/image/ab67616d0000b2730a47bbe7141fdfe0eb2cdba7"
+        },
+        {
+          "id": "4Qm7r3ImER8S2Ori1gLMAf",
+          "name": "Afsos",
+          "artists": [
+            "Anuv Jain",
+            "AP Dhillon"
+          ],
+          "album": "Afsos",
+          "image": "https://i.scdn.co/image/ab67616d0000b2738537cf974af2c408bdd8e1a6"
+        },
+        {
+          "id": "4XTgFBxBHN6var1BzAgE1m",
+          "name": "Jhol",
+          "artists": [
+            "Maanu",
+            "Annural Khalid"
+          ],
+          "album": "Jhol",
+          "image": "https://i.scdn.co/image/ab67616d0000b2731344800458a38197bfc721f3"
+        },
+        {
+          "id": "5anjuktgwHsxPOY7QhyoQx",
+          "name": "Kashni",
+          "artists": [
+            "Talwiinder",
+            "NDS",
+            "Simar"
+          ],
+          "album": "Misfit",
+          "image": "https://i.scdn.co/image/ab67616d0000b273962307b856c59310b2a6d371"
+        },
+        {
+          "id": "6AI3ezQ4o3HUoP6Dhudph3",
+          "name": "Not Like Us",
+          "artists": [
+            "Kendrick Lamar"
+          ],
+          "album": "Not Like Us",
+          "image": "https://i.scdn.co/image/ab67616d0000b2731ea0c62b2339cbf493a999ad"
+        },
+        {
+          "id": "7129iqBafaphfc3WPCGC0L",
+          "name": "7 Years",
+          "artists": [
+            "Lukas Graham"
+          ],
+          "album": "Lukas Graham (Blue Album)",
+          "image": "https://i.scdn.co/image/ab67616d0000b2739c2ba50154a64c3c898ec7e2"
+        }
+      ]
+    },
+    {
+      "id": "jb9m61u3uk1btsfvojgc3gh3o",
+      "display_name": "Onlyvibhore",
+      "image": "https://i.scdn.co/image/ab6775700000ee8523afe289e275b25089285464",
+      "topTracks": [
+        {
+          "id": "6nRGPf5tpeJtKpXZO5cgIT",
+          "name": "Paro",
+          "artists": [
+            "Aditya Rikhari",
+            "UNPLG'd"
+          ],
+          "album": {
+            "name": "Paro",
+            "release_date": "2024-11-12",
+            "album_type": "single",
+            "images": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b2735fe9856a449aab589c06b6c8",
+                "height": 640,
+                "width": 640
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e025fe9856a449aab589c06b6c8",
+                "height": 300,
+                "width": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d000048515fe9856a449aab589c06b6c8",
+                "height": 64,
+                "width": 64
+              }
+            ]
+          },
+          "external_urls": {
+            "spotify": "https://open.spotify.com/track/6nRGPf5tpeJtKpXZO5cgIT"
+          }
+        },
+        {
+          "id": "02BcXEH1zJYbXSabPtNlKf",
+          "name": "Lose My Mind (feat. Doja Cat) [From F1® The Movie]",
+          "artists": [
+            "Don Toliver",
+            "Doja Cat",
+            "F1 The Album"
+          ],
+          "album": {
+            "name": "Lose My Mind (feat. Doja Cat) [From F1® The Movie]",
+            "release_date": "2025-04-30",
+            "album_type": "single",
+            "images": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b273bed9c7b9e33025a81d4d02e4",
+                "height": 640,
+                "width": 640
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e02bed9c7b9e33025a81d4d02e4",
+                "height": 300,
+                "width": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00004851bed9c7b9e33025a81d4d02e4",
+                "height": 64,
+                "width": 64
+              }
+            ]
+          },
+          "external_urls": {
+            "spotify": "https://open.spotify.com/track/02BcXEH1zJYbXSabPtNlKf"
+          }
+        },
+        {
+          "id": "7wdzLe2Gsx1RGqbvYZHASz",
+          "name": "i",
+          "artists": [
+            "Kendrick Lamar"
+          ],
+          "album": {
+            "name": "i",
+            "release_date": "2014-09-23",
+            "album_type": "single",
+            "images": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b2736d89f336fbfbdf2089701da0",
+                "height": 640,
+                "width": 640
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e026d89f336fbfbdf2089701da0",
+                "height": 300,
+                "width": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d000048516d89f336fbfbdf2089701da0",
+                "height": 64,
+                "width": 64
+              }
+            ]
+          },
+          "external_urls": {
+            "spotify": "https://open.spotify.com/track/7wdzLe2Gsx1RGqbvYZHASz"
+          }
+        },
+        {
+          "id": "7wGgYAOMhhRObOGdWlJ9Hi",
+          "name": "Departure Lane",
+          "artists": [
+            "Talha Anjum",
+            "Umair"
+          ],
+          "album": {
+            "name": "My Terrible Mind",
+            "release_date": "2024-11-29",
+            "album_type": "album",
+            "images": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b2739c1830c96a63b06c943519e1",
+                "height": 640,
+                "width": 640
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e029c1830c96a63b06c943519e1",
+                "height": 300,
+                "width": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d000048519c1830c96a63b06c943519e1",
+                "height": 64,
+                "width": 64
+              }
+            ]
+          },
+          "external_urls": {
+            "spotify": "https://open.spotify.com/track/7wGgYAOMhhRObOGdWlJ9Hi"
+          }
+        },
+        {
+          "id": "0eLtIxPRNJfsmehITZ1qaJ",
+          "name": "Sahiba",
+          "artists": [
+            "Aditya Rikhari"
+          ],
+          "album": {
+            "name": "Sahiba",
+            "release_date": "2023-12-19",
+            "album_type": "single",
+            "images": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b2730a47bbe7141fdfe0eb2cdba7",
+                "height": 640,
+                "width": 640
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e020a47bbe7141fdfe0eb2cdba7",
+                "height": 300,
+                "width": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d000048510a47bbe7141fdfe0eb2cdba7",
+                "height": 64,
+                "width": 64
+              }
+            ]
+          },
+          "external_urls": {
+            "spotify": "https://open.spotify.com/track/0eLtIxPRNJfsmehITZ1qaJ"
+          }
+        },
+        {
+          "id": "4Qm7r3ImER8S2Ori1gLMAf",
+          "name": "Afsos",
+          "artists": [
+            "Anuv Jain",
+            "AP Dhillon"
+          ],
+          "album": {
+            "name": "Afsos",
+            "release_date": "2025-01-31",
+            "album_type": "single",
+            "images": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b2738537cf974af2c408bdd8e1a6",
+                "height": 640,
+                "width": 640
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e028537cf974af2c408bdd8e1a6",
+                "height": 300,
+                "width": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d000048518537cf974af2c408bdd8e1a6",
+                "height": 64,
+                "width": 64
+              }
+            ]
+          },
+          "external_urls": {
+            "spotify": "https://open.spotify.com/track/4Qm7r3ImER8S2Ori1gLMAf"
+          }
+        },
+        {
+          "id": "4XTgFBxBHN6var1BzAgE1m",
+          "name": "Jhol",
+          "artists": [
+            "Maanu",
+            "Annural Khalid"
+          ],
+          "album": {
+            "name": "Jhol",
+            "release_date": "2024-06-14",
+            "album_type": "single",
+            "images": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b2731344800458a38197bfc721f3",
+                "height": 640,
+                "width": 640
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e021344800458a38197bfc721f3",
+                "height": 300,
+                "width": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d000048511344800458a38197bfc721f3",
+                "height": 64,
+                "width": 64
+              }
+            ]
+          },
+          "external_urls": {
+            "spotify": "https://open.spotify.com/track/4XTgFBxBHN6var1BzAgE1m"
+          }
+        },
+        {
+          "id": "5anjuktgwHsxPOY7QhyoQx",
+          "name": "Kashni",
+          "artists": [
+            "Talwiinder",
+            "NDS",
+            "Simar"
+          ],
+          "album": {
+            "name": "Misfit",
+            "release_date": "2024-10-04",
+            "album_type": "album",
+            "images": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b273962307b856c59310b2a6d371",
+                "height": 640,
+                "width": 640
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e02962307b856c59310b2a6d371",
+                "height": 300,
+                "width": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00004851962307b856c59310b2a6d371",
+                "height": 64,
+                "width": 64
+              }
+            ]
+          },
+          "external_urls": {
+            "spotify": "https://open.spotify.com/track/5anjuktgwHsxPOY7QhyoQx"
+          }
+        },
+        {
+          "id": "6AI3ezQ4o3HUoP6Dhudph3",
+          "name": "Not Like Us",
+          "artists": [
+            "Kendrick Lamar"
+          ],
+          "album": {
+            "name": "Not Like Us",
+            "release_date": "2024-05-04",
+            "album_type": "single",
+            "images": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b2731ea0c62b2339cbf493a999ad",
+                "height": 640,
+                "width": 640
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e021ea0c62b2339cbf493a999ad",
+                "height": 300,
+                "width": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d000048511ea0c62b2339cbf493a999ad",
+                "height": 64,
+                "width": 64
+              }
+            ]
+          },
+          "external_urls": {
+            "spotify": "https://open.spotify.com/track/6AI3ezQ4o3HUoP6Dhudph3"
+          }
+        },
+        {
+          "id": "7129iqBafaphfc3WPCGC0L",
+          "name": "7 Years",
+          "artists": [
+            "Lukas Graham"
+          ],
+          "album": {
+            "name": "Lukas Graham (Blue Album)",
+            "release_date": "2015-06-16",
+            "album_type": "album",
+            "images": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b2739c2ba50154a64c3c898ec7e2",
+                "height": 640,
+                "width": 640
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e029c2ba50154a64c3c898ec7e2",
+                "height": 300,
+                "width": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d000048519c2ba50154a64c3c898ec7e2",
+                "height": 64,
+                "width": 64
+              }
+            ]
+          },
+          "external_urls": {
+            "spotify": "https://open.spotify.com/track/7129iqBafaphfc3WPCGC0L"
+          }
+        },
+        {
+          "id": "7eQoMQdE4JqngwYDOqLBU0",
+          "name": "Superstar",
+          "artists": [
+            "dox",
+            "JASKARAN",
+            "Rita Kim"
+          ],
+          "album": {
+            "name": "ONE FROM THE CROWD",
+            "release_date": "2025-02-28",
+            "album_type": "album",
+            "images": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b27325202a8c5fd594b8e8ee2d5e",
+                "height": 640,
+                "width": 640
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e0225202a8c5fd594b8e8ee2d5e",
+                "height": 300,
+                "width": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000485125202a8c5fd594b8e8ee2d5e",
+                "height": 64,
+                "width": 64
+              }
+            ]
+          },
+          "external_urls": {
+            "spotify": "https://open.spotify.com/track/7eQoMQdE4JqngwYDOqLBU0"
+          }
+        },
+        {
+          "id": "4TCeFZNjGNQIpCuZmJkkE2",
+          "name": "God's Country",
+          "artists": [
+            "Blake Shelton"
+          ],
+          "album": {
+            "name": "Fully Loaded: God's Country",
+            "release_date": "2019-12-13",
+            "album_type": "album",
+            "images": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b273acf99661b45380007ad598cb",
+                "height": 640,
+                "width": 640
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e02acf99661b45380007ad598cb",
+                "height": 300,
+                "width": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00004851acf99661b45380007ad598cb",
+                "height": 64,
+                "width": 64
+              }
+            ]
+          },
+          "external_urls": {
+            "spotify": "https://open.spotify.com/track/4TCeFZNjGNQIpCuZmJkkE2"
+          }
+        },
+        {
+          "id": "2CGNAOSuO1MEFCbBRgUzjd",
+          "name": "luther (with sza)",
+          "artists": [
+            "Kendrick Lamar",
+            "SZA"
+          ],
+          "album": {
+            "name": "GNX",
+            "release_date": "2024-11-21",
+            "album_type": "album",
+            "images": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b27309d6ed214f03fbb663e46531",
+                "height": 640,
+                "width": 640
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e0209d6ed214f03fbb663e46531",
+                "height": 300,
+                "width": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000485109d6ed214f03fbb663e46531",
+                "height": 64,
+                "width": 64
+              }
+            ]
+          },
+          "external_urls": {
+            "spotify": "https://open.spotify.com/track/2CGNAOSuO1MEFCbBRgUzjd"
+          }
+        },
+        {
+          "id": "3BpaZLc6j9cBUsvnh5kinR",
+          "name": "Safar",
+          "artists": [
+            "Pritam",
+            "Arijit Singh"
+          ],
+          "album": {
+            "name": "Jab Harry Met Sejal (Original Motion Picture Soundtrack)",
+            "release_date": "2017-08-03",
+            "album_type": "album",
+            "images": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b273a08a13555e245f7f11aba13f",
+                "height": 640,
+                "width": 640
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e02a08a13555e245f7f11aba13f",
+                "height": 300,
+                "width": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00004851a08a13555e245f7f11aba13f",
+                "height": 64,
+                "width": 64
+              }
+            ]
+          },
+          "external_urls": {
+            "spotify": "https://open.spotify.com/track/3BpaZLc6j9cBUsvnh5kinR"
+          }
+        },
+        {
+          "id": "4Q0qVhFQa7j6jRKzo3HDmP",
+          "name": "Sapphire",
+          "artists": [
+            "Ed Sheeran"
+          ],
+          "album": {
+            "name": "Sapphire",
+            "release_date": "2025-06-05",
+            "album_type": "single",
+            "images": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b2736fbb60d6a7e03ccb940a518e",
+                "height": 640,
+                "width": 640
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e026fbb60d6a7e03ccb940a518e",
+                "height": 300,
+                "width": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d000048516fbb60d6a7e03ccb940a518e",
+                "height": 64,
+                "width": 64
+              }
+            ]
+          },
+          "external_urls": {
+            "spotify": "https://open.spotify.com/track/4Q0qVhFQa7j6jRKzo3HDmP"
+          }
+        },
+        {
+          "id": "2ZzZ2qwZBWlDKs420hhloc",
+          "name": "Maand",
+          "artists": [
+            "Bayaan",
+            "Hasan Raheem",
+            "Rovalio"
+          ],
+          "album": {
+            "name": "Safar",
+            "release_date": "2024-12-12",
+            "album_type": "album",
+            "images": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b273e92665d901d9c22e0d617a8e",
+                "height": 640,
+                "width": 640
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e02e92665d901d9c22e0d617a8e",
+                "height": 300,
+                "width": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00004851e92665d901d9c22e0d617a8e",
+                "height": 64,
+                "width": 64
+              }
+            ]
+          },
+          "external_urls": {
+            "spotify": "https://open.spotify.com/track/2ZzZ2qwZBWlDKs420hhloc"
+          }
+        },
+        {
+          "id": "1ilghG3feHqcVKohYdQYm3",
+          "name": "Ting Ling Sajna (From \"Bhool Chuk Maaf\")",
+          "artists": [
+            "Tanishk Bagchi",
+            "Madhubanti Bagchi",
+            "Irshad Kamil"
+          ],
+          "album": {
+            "name": "Bhool Chuk Maaf (Original Motion Picture Soundtrack)",
+            "release_date": "2025-05-23",
+            "album_type": "album",
+            "images": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b2733700afba035ed3b0926ead77",
+                "height": 640,
+                "width": 640
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e023700afba035ed3b0926ead77",
+                "height": 300,
+                "width": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d000048513700afba035ed3b0926ead77",
+                "height": 64,
+                "width": 64
+              }
+            ]
+          },
+          "external_urls": {
+            "spotify": "https://open.spotify.com/track/1ilghG3feHqcVKohYdQYm3"
+          }
+        },
+        {
+          "id": "1p0rEzrK7YtdRZVtiyV7RN",
+          "name": "Lemonade (feat. NAV)",
+          "artists": [
+            "Internet Money",
+            "Gunna",
+            "Don Toliver",
+            "NAV"
+          ],
+          "album": {
+            "name": "B4 The Storm",
+            "release_date": "2020-08-28",
+            "album_type": "album",
+            "images": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b273c4adc981dc6656e52c916088",
+                "height": 640,
+                "width": 640
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e02c4adc981dc6656e52c916088",
+                "height": 300,
+                "width": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00004851c4adc981dc6656e52c916088",
+                "height": 64,
+                "width": 64
+              }
+            ]
+          },
+          "external_urls": {
+            "spotify": "https://open.spotify.com/track/1p0rEzrK7YtdRZVtiyV7RN"
+          }
+        },
+        {
+          "id": "0aB0v4027ukVziUGwVGYpG",
+          "name": "tv off (feat. lefty gunplay)",
+          "artists": [
+            "Kendrick Lamar",
+            "Lefty Gunplay"
+          ],
+          "album": {
+            "name": "GNX",
+            "release_date": "2024-11-22",
+            "album_type": "album",
+            "images": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b273d9985092cd88bffd97653b58",
+                "height": 640,
+                "width": 640
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e02d9985092cd88bffd97653b58",
+                "height": 300,
+                "width": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00004851d9985092cd88bffd97653b58",
+                "height": 64,
+                "width": 64
+              }
+            ]
+          },
+          "external_urls": {
+            "spotify": "https://open.spotify.com/track/0aB0v4027ukVziUGwVGYpG"
+          }
+        },
+        {
+          "id": "0mEdbdeRFQwBhN4xfyIeUM",
+          "name": "Can't Tell Me Nothing",
+          "artists": [
+            "Kanye West"
+          ],
+          "album": {
+            "name": "Graduation",
+            "release_date": "2007-09-11",
+            "album_type": "album",
+            "images": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b27326f7f19c7f0381e56156c94a",
+                "height": 640,
+                "width": 640
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e0226f7f19c7f0381e56156c94a",
+                "height": 300,
+                "width": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000485126f7f19c7f0381e56156c94a",
+                "height": 64,
+                "width": 64
+              }
+            ]
+          },
+          "external_urls": {
+            "spotify": "https://open.spotify.com/track/0mEdbdeRFQwBhN4xfyIeUM"
+          }
+        }
+      ],
+      "followers": 1
+    }
+  ]
+}

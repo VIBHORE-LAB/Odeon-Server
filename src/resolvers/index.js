@@ -4,6 +4,11 @@ const {
   getTopTracks,
   getAudioFeatures,
   getTopArtists,
+  getGenreStats,
+  getLibraryTracksCount,
+  getHoursListened,
+  getArtistsDiscovered,
+  getPlaylistsCountThisYear,
 } = require("../spotify/api");
 const { ApolloError } = require("apollo-server-errors");
 const { db } = require("../config/db");
@@ -64,12 +69,16 @@ const resolvers = {
       }
     },
 
-    topTracks: async (_, __, { token }) => {
+    topTracks: async (
+      _,
+      { limit = 20, timeRange = "medium_term" },
+      { token }
+    ) => {
       if (!token) throw new ApolloError("Not authenticated", "UNAUTHENTICATED");
 
       try {
         const [tracks, user] = await Promise.all([
-          withAutoRefresh(getTopTracks, token),
+          withAutoRefresh(getTopTracks, token, limit, timeRange),
           withAutoRefresh(getUserProfile, token),
         ]);
 
@@ -77,7 +86,7 @@ const resolvers = {
           ? tracks.map((track) => ({
               id: track.id,
               name: track.name,
-              artists: track.artists, // Already mapped to names in getTopTracks
+              artists: track.artists,
               album: track.album
                 ? {
                     name: track.album.name || null,
@@ -156,6 +165,60 @@ const resolvers = {
           error.response?.data || error.message
         );
         throw new ApolloError("Failed to fetch top artists");
+      }
+    },
+
+    genreStats: async (
+      _,
+      { limit = 20, timeRange = "medium_term" },
+      { token }
+    ) => {
+      if (!token) throw new ApolloError("Not authenticated", "UNAUTHENTICATED");
+
+      try {
+        return await withAutoRefresh(
+          (tkn) => getGenreStats(tkn, limit, timeRange),
+          token
+        );
+      } catch (error) {
+        console.error(
+          "Error fetching genre stats:",
+          error.response?.data || error.message
+        );
+        throw new ApolloError("Failed to fetch genre stats");
+      }
+    },
+
+    userStats: async (_, { year = new Date().getFullYear() }, { token }) => {
+      if (!token) throw new ApolloError("Not authenticated", "UNAUTHENTICATED");
+
+      try {
+        return await withAutoRefresh(async (tkn) => {
+          const [
+            hoursListened,
+            artistsDiscovered,
+            songsInLibrary,
+            playlistsCreated,
+          ] = await Promise.all([
+            getHoursListened(tkn),
+            getArtistsDiscovered(tkn, year),
+            getLibraryTracksCount(tkn),
+            getPlaylistsCountThisYear(tkn, year),
+          ]);
+
+          return {
+            hoursListened,
+            artistsDiscovered,
+            songsInLibrary,
+            playlistsCreated,
+          };
+        }, token);
+      } catch (error) {
+        console.error(
+          "Error fetching user stats:",
+          error.response?.data || error.message
+        );
+        throw new ApolloError("Failed to fetch user stats");
       }
     },
   },

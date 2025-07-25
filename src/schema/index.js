@@ -64,6 +64,13 @@ const typeDefs = gql`
     count: Int!
   }
 
+  type UserStat {
+    hoursListened: Int!
+    artistsDiscovered: Int!
+    songsInLibrary: Int!
+    playlistsCreated: Int!
+  }
+
   type Query {
     me: User
     topTracks(limit: Int = 20, timeRange: String = "medium_term"): [Track!]!
@@ -73,6 +80,7 @@ const typeDefs = gql`
       timeRange: String = "medium_term"
       limit: Int = 20
     ): [GenreStat!]!
+    userStats(year: Int = 2025): UserStat!
   }
 `;
 

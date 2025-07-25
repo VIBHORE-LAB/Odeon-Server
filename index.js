@@ -12,9 +12,9 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URI || "http://localhost:3000",
+    origin: "*",
     credentials: true,
-  })
+  }),
 );
 
 // Login route

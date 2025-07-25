@@ -18,10 +18,10 @@ const getUserProfile = async (token) => {
   }
 };
 
-const getTopTracks = async (token) => {
+const getTopTracks = async (token,limit = 20, time_range) => {
   try {
     const { data } = await axios.get(
-      "https://api.spotify.com/v1/me/top/tracks?limit=20",
+      `https://api.spotify.com/v1/me/top/tracks?limit=${limit}&time_range=${time_range}`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -81,18 +81,92 @@ const getAudioFeatures = async (token, trackId) => {
   }
 };
 
-const getTopArtists = async (token,limit=20, time_range) =>{
+const getTopArtists = async (token, limit = 20, time_range) => {
   const url = `https://api.spotify.com/v1/me/top/artists?limit=${limit}&time_range=${time_range}`;
   const { data } = await axios.get(url, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return data.items;
+};
+
+const getGenreStats = async (token, limit = 20, time_range) => {
+  const artists = await getTopArtists(token, limit, time_range);
+
+  const genreCount = {};
+  artists.forEach((artist) => {
+    (artist.genres || []).forEach((genre) => {
+      genreCount[genre] = (genreCount[genre] || 0) + 1;
+    });
+  });
+
+  return Object.entries(genreCount)
+    .map(([genre, count]) => ({ genre, count }))
+    .sort((a, b) => b.count - a.count);
+};
 
 
-}
+const getLibraryTracksCount = async (token) => {
+  const { data } = await axios.get("https://api.spotify.com/v1/me/tracks?limit=1", {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return data.total;
+};
+
+const getPlaylistsCountThisYear = async (token, year) => {
+  const { data } = await axios.get("https://api.spotify.com/v1/me/playlists?limit=50", {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+
+  return data.items.filter((p) => p.owner.id && p.owner.id !== "spotify" && 
+    new Date(p.snapshot_id).getFullYear() === year).length;
+};
+
+const getArtistsDiscovered = async (token, year) => {
+  const { data } = await axios.get(
+    "https://api.spotify.com/v1/me/top/artists?limit=50&time_range=long_term",
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    }
+  );
+  return data.items.length;
+};
+
+const getHoursListened = async (token) => {
+  const { data } = await axios.get(
+    "https://api.spotify.com/v1/me/player/recently-played?limit=50",
+    { headers: { Authorization: `Bearer ${token}` } }
+  );
+
+  if (!data.items || data.items.length === 0) return 0;
+
+  const totalMs = data.items.reduce(
+    (sum, item) => sum + item.track.duration_ms,
+    0
+  );
+  //appp
+  const recentHours = totalMs / 1000 / 60 / 60;
+
+  const dayOfYear = Math.floor(
+    (new Date() - new Date(new Date().getFullYear(), 0, 0)) /
+      (1000 * 60 * 60 * 24)
+  );
+  const estimatedYearHours = (recentHours * 365) / dayOfYear;
+
+  return Math.floor(estimatedYearHours);
+};
 
 
 
 
 
-module.exports = { getUserProfile, getTopTracks, getAudioFeatures,getTopArtists };
+module.exports = {
+  getUserProfile,
+  getTopTracks,
+  getAudioFeatures,
+  getTopArtists,
+  getGenreStats,
+  getLibraryTracksCount,
+  getHoursListened,
+  getArtistsDiscovered,
+  getPlaylistsCountThisYear,
+};

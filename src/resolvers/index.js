@@ -9,23 +9,25 @@ const {
   getHoursListened,
   getArtistsDiscovered,
   getPlaylistsCountThisYear,
+  getUserPlaylists,
+  getFollowedArtists
 } = require("../spotify/api");
 const { ApolloError } = require("apollo-server-errors");
 const { db } = require("../config/db");
 
 const sanitize = (x) => JSON.parse(JSON.stringify(x));
-
-/**
- * Wraps API calls to handle token refresh automatically
- */
-async function withAutoRefresh(apiCall, accessToken, ...args) {
+async function withAutoRefresh(apiCall, accessToken, refreshToken, ...args) {
   try {
-    return await apiCall(accessToken, ...args);
+    return { result: await apiCall(accessToken, ...args), token: accessToken };
   } catch (err) {
     if (err?.response?.status === 401) {
       console.warn("Access token expired, refreshing...");
-      const newToken = await refreshSpotifyToken(accessToken); // auto-refresh
-      return await apiCall(newToken);
+      const { access_token: newAccessToken } =
+        await refreshSpotifyToken(refreshToken);
+      return {
+        result: await apiCall(newAccessToken, ...args),
+        token: newAccessToken,
+      };
     }
     throw err;
   }
@@ -33,10 +35,16 @@ async function withAutoRefresh(apiCall, accessToken, ...args) {
 
 const resolvers = {
   Query: {
-    me: async (_, __, { token }) => {
-      if (!token) throw new ApolloError("Not authenticated", "UNAUTHENTICATED");
+    me: async (_, __, { token, refreshToken }) => {
+      if (!token || !refreshToken)
+        throw new ApolloError("Not authenticated", "UNAUTHENTICATED");
+
       try {
-        const user = await withAutoRefresh(getUserProfile, token);
+        const { result: user } = await withAutoRefresh(
+          getUserProfile,
+          token,
+          refreshToken,
+        );
 
         await db.read();
         let existingUser = db.data.users.find((u) => u.id === user.id);
@@ -72,15 +80,26 @@ const resolvers = {
     topTracks: async (
       _,
       { limit = 20, timeRange = "medium_term" },
-      { token }
+      { token, refreshToken },
     ) => {
-      if (!token) throw new ApolloError("Not authenticated", "UNAUTHENTICATED");
+      if (!token || !refreshToken)
+        throw new ApolloError("Not authenticated", "UNAUTHENTICATED");
 
       try {
-        const [tracks, user] = await Promise.all([
-          withAutoRefresh(getTopTracks, token, limit, timeRange),
-          withAutoRefresh(getUserProfile, token),
-        ]);
+        const { result: user, token: freshToken } = await withAutoRefresh(
+          getUserProfile,
+          token,
+          refreshToken,
+        );
+        const { result: tracks } = await withAutoRefresh(
+          getTopTracks,
+          freshToken,
+          refreshToken,
+          limit,
+          timeRange,
+        );
+
+        console.log("tracks", tracks);
 
         const mappedTracks = Array.isArray(tracks)
           ? tracks.map((track) => ({
@@ -121,13 +140,15 @@ const resolvers = {
       }
     },
 
-    analyzeTrack: async (_, { id }, { token }) => {
-      if (!token) throw new ApolloError("Not authenticated", "UNAUTHENTICATED");
+    analyzeTrack: async (_, { id }, { token, refreshToken }) => {
+      if (!token || !refreshToken)
+        throw new ApolloError("Not authenticated", "UNAUTHENTICATED");
 
       try {
         const features = await withAutoRefresh(
-          async (tkn) => getAudioFeatures(tkn, id),
-          token
+          (tkn) => getAudioFeatures(tkn, id),
+          token,
+          refreshToken,
         );
 
         if (!features) {
@@ -154,15 +175,25 @@ const resolvers = {
     topArtists: async (
       _,
       { limit = 20, timeRange = "medium_term" },
-      { token }
+      { token, refreshToken },
     ) => {
-      if (!token) throw new ApolloError("Not authenticated", "UNAUTHENTICATED");
+      if (!token || !refreshToken)
+        throw new ApolloError("Not authenticated", "UNAUTHENTICATED");
+
       try {
-        return await getTopArtists(token, limit, timeRange);
+        const { result: artists } = await withAutoRefresh(
+          getTopArtists,
+          token,
+          refreshToken,
+          limit,
+          timeRange,
+        );
+
+        return artists;
       } catch (error) {
         console.error(
           "Error fetching top artists:",
-          error.response?.data || error.message
+          error.response?.data || error.message,
         );
         throw new ApolloError("Failed to fetch top artists");
       }
@@ -171,52 +202,124 @@ const resolvers = {
     genreStats: async (
       _,
       { limit = 20, timeRange = "medium_term" },
-      { token }
+      { token, refreshToken },
     ) => {
-      if (!token) throw new ApolloError("Not authenticated", "UNAUTHENTICATED");
+      if (!token || !refreshToken)
+        throw new ApolloError("Not authenticated", "UNAUTHENTICATED");
 
       try {
-        return await withAutoRefresh(
+        const { result: genres } = await withAutoRefresh(
           (tkn) => getGenreStats(tkn, limit, timeRange),
-          token
+          token,
+          refreshToken,
         );
+
+        return genres;
       } catch (error) {
         console.error(
           "Error fetching genre stats:",
-          error.response?.data || error.message
+          error.response?.data || error.message,
         );
         throw new ApolloError("Failed to fetch genre stats");
       }
     },
-
-    userStats: async (_, { year = new Date().getFullYear() }, { token }) => {
-      if (!token) throw new ApolloError("Not authenticated", "UNAUTHENTICATED");
+    playlistsStats: async (
+      _,
+      { limit = 20, timeRange = "medium_term" },
+      { token, refreshToken },
+    ) => {
+      if (!token || !refreshToken) {
+        throw new ApolloError("Not authenticated", "UNAUTHENTICATED");
+      }
 
       try {
-        return await withAutoRefresh(async (tkn) => {
-          const [
-            hoursListened,
-            artistsDiscovered,
-            songsInLibrary,
-            playlistsCreated,
-          ] = await Promise.all([
-            getHoursListened(tkn),
-            getArtistsDiscovered(tkn, year),
-            getLibraryTracksCount(tkn),
-            getPlaylistsCountThisYear(tkn, year),
-          ]);
+        const { result: playlistData } = await withAutoRefresh(
+          (tkn) => getUserPlaylists(tkn, limit, 0),
+          token,
+          refreshToken,
+        );
+        return playlistData.items.map((playlist) => ({
+          id: playlist.id,
+          name: playlist.name,
+          description: playlist.description,
+          owner: playlist.owner?.display_name || "Unknown",
+          totalTracks: playlist.tracks.total,
+          public: playlist.public,
+          images: playlist.images,
+        }));
+      } catch (error) {
+        console.error(
+          "Error fetching Playlists",
+          error.response?.data || error.message,
+        );
+      }
+    },
+    
+    followedArtists: async (
+      _,
+      { limit = 50 },
+      { token, refreshToken }
+    ) => {
+      if (!token || !refreshToken) {
+        throw new ApolloError("Not authenticated", "UNAUTHENTICATED");
+      }
+    
+      try {
+        const { result } = await withAutoRefresh(
+          (tkn) => getFollowedArtists(tkn, limit),
+          token,
+          refreshToken
+        );
+    
+        return {
+          total: result.artists.total,
+          items: result.artists.items,
+        };
+      } catch (error) {
+        console.error("Failed to fetch followed artists:", error);
+        throw new ApolloError("Failed to fetch followed artists");
+      }
+    },
 
-          return {
-            hoursListened,
-            artistsDiscovered,
-            songsInLibrary,
-            playlistsCreated,
-          };
-        }, token);
+    userStats: async (
+      _,
+      { year = new Date().getFullYear() },
+      { token, refreshToken },
+    ) => {
+      if (!token || !refreshToken)
+        throw new ApolloError("Not authenticated", "UNAUTHENTICATED");
+
+      try {
+        const { result: stats } = await withAutoRefresh(
+          async (tkn) => {
+            const [
+              hoursListened,
+              artistsDiscovered,
+              songsInLibrary,
+              playlistsCreated,
+            ] = await Promise.all([
+              getHoursListened(tkn),
+              getArtistsDiscovered(tkn, year),
+              getLibraryTracksCount(tkn),
+              getPlaylistsCountThisYear(tkn, year),
+            ]);
+
+            return {
+              hoursListened,
+              artistsDiscovered,
+              songsInLibrary,
+              playlistsCreated,
+            };
+          },
+          token,
+          refreshToken,
+        );
+
+        return stats;
       } catch (error) {
         console.error(
           "Error fetching user stats:",
-          error.response?.data || error.message
+          error.response?.data || error.message,
         );
         throw new ApolloError("Failed to fetch user stats");
       }

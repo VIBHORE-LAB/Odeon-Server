@@ -30,6 +30,7 @@ const typeDefs = gql`
     artists: [String!]!
     album: Album
     external_urls: ExternalUrls!
+    skipRate: Float
   }
 
   type ArtistImage {
@@ -70,6 +71,26 @@ const typeDefs = gql`
     songsInLibrary: Int!
     playlistsCreated: Int!
   }
+  type PlaylistImage {
+    url: String!
+    height: Int
+    width: Int
+  }
+
+  type Playlist {
+    id: String!
+    name: String!
+    description: String
+    owner: String!
+    totalTracks: Int!
+    public: Boolean!
+    images: [PlaylistImage!]!
+  }
+
+  type FollowedArtists {
+    total: Int!
+    items: [Artist!]!
+  }
 
   type Query {
     me: User
@@ -81,6 +102,8 @@ const typeDefs = gql`
       limit: Int = 20
     ): [GenreStat!]!
     userStats(year: Int = 2025): UserStat!
+    playlistsStats(limit: Int = 20, offset: Int = 0): [Playlist!]!
+    followedArtists(limit: Int = 20, after: String): FollowedArtists!
   }
 `;
 

@@ -18,13 +18,16 @@ const getUserProfile = async (token) => {
   }
 };
 
-const getTopTracks = async (token,limit = 20, time_range) => {
+const getTopTracks = async (token, limit = 20, time_range) => {
+  console.log("tokenAtTracks", token);
+
   try {
+    console.log("tracksRoutehit");
     const { data } = await axios.get(
       `https://api.spotify.com/v1/me/top/tracks?limit=${limit}&time_range=${time_range}`,
       {
         headers: { Authorization: `Bearer ${token}` },
-      }
+      },
     );
 
     console.log("Spotify top tracks data:", data.items);
@@ -60,14 +63,14 @@ const getAudioFeatures = async (token, trackId) => {
     console.log("DEBUG: getAudioFeatures() called with trackId:", trackId);
     console.log(
       "DEBUG: Authorization Token (first 20 chars):",
-      token?.slice(0, 20)
+      token?.slice(0, 20),
     );
 
     const { data } = await axios.get(
       `https://api.spotify.com/v1/audio-features/${trackId}`,
       {
         headers: { Authorization: `Bearer ${token}` },
-      }
+      },
     );
 
     console.log("DEBUG: audio_features response:", data);
@@ -75,13 +78,14 @@ const getAudioFeatures = async (token, trackId) => {
   } catch (err) {
     console.error(
       "ERROR: getAudioFeatures failed with response:",
-      err.response?.data || err
+      err.response?.data || err,
     );
     throw err;
   }
 };
 
-const getTopArtists = async (token, limit = 20, time_range) => {
+const getTopArtists = async (token, limit, time_range) => {
+  console.log("tokenAtArtists", token);
   const url = `https://api.spotify.com/v1/me/top/artists?limit=${limit}&time_range=${time_range}`;
   const { data } = await axios.get(url, {
     headers: { Authorization: `Bearer ${token}` },
@@ -104,21 +108,30 @@ const getGenreStats = async (token, limit = 20, time_range) => {
     .sort((a, b) => b.count - a.count);
 };
 
-
 const getLibraryTracksCount = async (token) => {
-  const { data } = await axios.get("https://api.spotify.com/v1/me/tracks?limit=1", {
-    headers: { Authorization: `Bearer ${token}` },
-  });
+  const { data } = await axios.get(
+    "https://api.spotify.com/v1/me/tracks?limit=1",
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    },
+  );
   return data.total;
 };
 
 const getPlaylistsCountThisYear = async (token, year) => {
-  const { data } = await axios.get("https://api.spotify.com/v1/me/playlists?limit=50", {
-    headers: { Authorization: `Bearer ${token}` },
-  });
+  const { data } = await axios.get(
+    "https://api.spotify.com/v1/me/playlists?limit=50",
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    },
+  );
 
-  return data.items.filter((p) => p.owner.id && p.owner.id !== "spotify" && 
-    new Date(p.snapshot_id).getFullYear() === year).length;
+  return data.items.filter(
+    (p) =>
+      p.owner.id &&
+      p.owner.id !== "spotify" &&
+      new Date(p.snapshot_id).getFullYear() === year,
+  ).length;
 };
 
 const getArtistsDiscovered = async (token, year) => {
@@ -126,7 +139,7 @@ const getArtistsDiscovered = async (token, year) => {
     "https://api.spotify.com/v1/me/top/artists?limit=50&time_range=long_term",
     {
       headers: { Authorization: `Bearer ${token}` },
-    }
+    },
   );
   return data.items.length;
 };
@@ -134,30 +147,66 @@ const getArtistsDiscovered = async (token, year) => {
 const getHoursListened = async (token) => {
   const { data } = await axios.get(
     "https://api.spotify.com/v1/me/player/recently-played?limit=50",
-    { headers: { Authorization: `Bearer ${token}` } }
+    { headers: { Authorization: `Bearer ${token}` } },
   );
 
   if (!data.items || data.items.length === 0) return 0;
 
   const totalMs = data.items.reduce(
     (sum, item) => sum + item.track.duration_ms,
-    0
+    0,
   );
   //appp
   const recentHours = totalMs / 1000 / 60 / 60;
 
   const dayOfYear = Math.floor(
     (new Date() - new Date(new Date().getFullYear(), 0, 0)) /
-      (1000 * 60 * 60 * 24)
+      (1000 * 60 * 60 * 24),
   );
   const estimatedYearHours = (recentHours * 365) / dayOfYear;
 
   return Math.floor(estimatedYearHours);
 };
 
+const getUserPlaylists = async (token, limit, offset = 0) => {
+  try {
+    const { data } = await axios.get(
+      `https://api.spotify.com/v1/me/playlists?limit=${limit}&offset=${offset}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+    return data;
+  } catch (error) {
+    console.error(
+      "Error fetching playlists:",
+      error.response?.data || error.message,
+    );
+    throw error;
+  }
+};
 
-
-
+const getFollowedArtists = async (token, limit) => {
+  try {
+    const { data } = await axios.get(
+      `https://api.spotify.com/v1/me/following?type=artist&limit=${limit}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+    return data;
+  } catch (error) {
+    console.error(
+      "Error fetching Artists:",
+      error.response?.data || error.message,
+    );
+    throw error;
+  }
+};
 
 module.exports = {
   getUserProfile,
@@ -169,4 +218,6 @@ module.exports = {
   getHoursListened,
   getArtistsDiscovered,
   getPlaylistsCountThisYear,
+  getUserPlaylists,
+  getFollowedArtists,
 };

@@ -3,7 +3,7 @@ const qs = require("qs");
 
 async function getSpotifyAccessToken(code) {
   const authBuffer = Buffer.from(
-    `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`
+    `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`,
   ).toString("base64");
 
   const response = await axios.post(
@@ -18,7 +18,7 @@ async function getSpotifyAccessToken(code) {
         Authorization: `Basic ${authBuffer}`,
         "Content-Type": "application/x-www-form-urlencoded",
       },
-    }
+    },
   );
   return response.data;
 }
@@ -29,7 +29,7 @@ async function refreshSpotifyToken(refreshToken) {
   params.append("refresh_token", refreshToken);
 
   const authHeader = Buffer.from(
-    `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`
+    `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`,
   ).toString("base64");
 
   try {
@@ -41,15 +41,14 @@ async function refreshSpotifyToken(refreshToken) {
           Authorization: `Basic ${authHeader}`,
           "Content-Type": "application/x-www-form-urlencoded",
         },
-      }
+      },
     );
-    return data.access_token;
+
+    return data; 
   } catch (err) {
     console.error("Error refreshing token:", err.response?.data || err.message);
     throw new Error("Failed to refresh token");
   }
 }
-
-
 
 module.exports = { getSpotifyAccessToken, refreshSpotifyToken };

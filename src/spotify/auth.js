@@ -46,7 +46,6 @@ async function refreshSpotifyToken(refreshToken) {
 
     return data; 
   } catch (err) {
-    console.error("Error refreshing token:", err.response?.data || err.message);
     throw new Error("Failed to refresh token");
   }
 }

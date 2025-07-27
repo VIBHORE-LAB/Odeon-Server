@@ -108,39 +108,6 @@
       "image": "https://i.scdn.co/image/ab6775700000ee8523afe289e275b25089285464",
       "topTracks": [
         {
-          "id": "6nRGPf5tpeJtKpXZO5cgIT",
-          "name": "Paro",
-          "artists": [
-            "Aditya Rikhari",
-            "UNPLG'd"
-          ],
-          "album": {
-            "name": "Paro",
-            "release_date": "2024-11-12",
-            "album_type": "single",
-            "images": [
-              {
-                "url": "https://i.scdn.co/image/ab67616d0000b2735fe9856a449aab589c06b6c8",
-                "height": 640,
-                "width": 640
-              },
-              {
-                "url": "https://i.scdn.co/image/ab67616d00001e025fe9856a449aab589c06b6c8",
-                "height": 300,
-                "width": 300
-              },
-              {
-                "url": "https://i.scdn.co/image/ab67616d000048515fe9856a449aab589c06b6c8",
-                "height": 64,
-                "width": 64
-              }
-            ]
-          },
-          "external_urls": {
-            "spotify": "https://open.spotify.com/track/6nRGPf5tpeJtKpXZO5cgIT"
-          }
-        },
-        {
           "id": "02BcXEH1zJYbXSabPtNlKf",
           "name": "Lose My Mind (feat. Doja Cat) [From F1® The Movie]",
           "artists": [
@@ -175,38 +142,6 @@
           }
         },
         {
-          "id": "7wdzLe2Gsx1RGqbvYZHASz",
-          "name": "i",
-          "artists": [
-            "Kendrick Lamar"
-          ],
-          "album": {
-            "name": "i",
-            "release_date": "2014-09-23",
-            "album_type": "single",
-            "images": [
-              {
-                "url": "https://i.scdn.co/image/ab67616d0000b2736d89f336fbfbdf2089701da0",
-                "height": 640,
-                "width": 640
-              },
-              {
-                "url": "https://i.scdn.co/image/ab67616d00001e026d89f336fbfbdf2089701da0",
-                "height": 300,
-                "width": 300
-              },
-              {
-                "url": "https://i.scdn.co/image/ab67616d000048516d89f336fbfbdf2089701da0",
-                "height": 64,
-                "width": 64
-              }
-            ]
-          },
-          "external_urls": {
-            "spotify": "https://open.spotify.com/track/7wdzLe2Gsx1RGqbvYZHASz"
-          }
-        },
-        {
           "id": "0eLtIxPRNJfsmehITZ1qaJ",
           "name": "Sahiba",
           "artists": [
@@ -236,39 +171,6 @@
           },
           "external_urls": {
             "spotify": "https://open.spotify.com/track/0eLtIxPRNJfsmehITZ1qaJ"
-          }
-        },
-        {
-          "id": "7wGgYAOMhhRObOGdWlJ9Hi",
-          "name": "Departure Lane",
-          "artists": [
-            "Talha Anjum",
-            "Umair"
-          ],
-          "album": {
-            "name": "My Terrible Mind",
-            "release_date": "2024-11-29",
-            "album_type": "album",
-            "images": [
-              {
-                "url": "https://i.scdn.co/image/ab67616d0000b2739c1830c96a63b06c943519e1",
-                "height": 640,
-                "width": 640
-              },
-              {
-                "url": "https://i.scdn.co/image/ab67616d00001e029c1830c96a63b06c943519e1",
-                "height": 300,
-                "width": 300
-              },
-              {
-                "url": "https://i.scdn.co/image/ab67616d000048519c1830c96a63b06c943519e1",
-                "height": 64,
-                "width": 64
-              }
-            ]
-          },
-          "external_urls": {
-            "spotify": "https://open.spotify.com/track/7wGgYAOMhhRObOGdWlJ9Hi"
           }
         },
         {
@@ -305,134 +207,234 @@
           }
         },
         {
-          "id": "4XTgFBxBHN6var1BzAgE1m",
-          "name": "Jhol",
+          "id": "3JiLQJmVW7d4O8AQDFB3oj",
+          "name": "Thodi Si Daaru",
           "artists": [
-            "Maanu",
-            "Annural Khalid"
+            "AP Dhillon",
+            "Shreya Ghoshal"
           ],
           "album": {
-            "name": "Jhol",
-            "release_date": "2024-06-14",
+            "name": "Thodi Si Daaru",
+            "release_date": "2025-07-17",
             "album_type": "single",
             "images": [
               {
-                "url": "https://i.scdn.co/image/ab67616d0000b2731344800458a38197bfc721f3",
+                "url": "https://i.scdn.co/image/ab67616d0000b273eb0516ec1c97c3cc97f4cb61",
                 "height": 640,
                 "width": 640
               },
               {
-                "url": "https://i.scdn.co/image/ab67616d00001e021344800458a38197bfc721f3",
+                "url": "https://i.scdn.co/image/ab67616d00001e02eb0516ec1c97c3cc97f4cb61",
                 "height": 300,
                 "width": 300
               },
               {
-                "url": "https://i.scdn.co/image/ab67616d000048511344800458a38197bfc721f3",
+                "url": "https://i.scdn.co/image/ab67616d00004851eb0516ec1c97c3cc97f4cb61",
                 "height": 64,
                 "width": 64
               }
             ]
           },
           "external_urls": {
-            "spotify": "https://open.spotify.com/track/4XTgFBxBHN6var1BzAgE1m"
+            "spotify": "https://open.spotify.com/track/3JiLQJmVW7d4O8AQDFB3oj"
           }
         },
         {
-          "id": "5anjuktgwHsxPOY7QhyoQx",
-          "name": "Kashni",
+          "id": "3QsGq1Xd1n8qc9hwSPzQgj",
+          "name": "Sirra",
           "artists": [
-            "Talwiinder",
-            "NDS",
-            "Simar"
+            "Guru Randhawa",
+            "Kiran Bajwa",
+            "Rony Ajnali"
           ],
           "album": {
-            "name": "Misfit",
-            "release_date": "2024-10-04",
+            "name": "WITHOUT PREJUDICE",
+            "release_date": "2025-03-28",
             "album_type": "album",
             "images": [
               {
-                "url": "https://i.scdn.co/image/ab67616d0000b273962307b856c59310b2a6d371",
+                "url": "https://i.scdn.co/image/ab67616d0000b273bd7e1592d75a9ad8d211debd",
                 "height": 640,
                 "width": 640
               },
               {
-                "url": "https://i.scdn.co/image/ab67616d00001e02962307b856c59310b2a6d371",
+                "url": "https://i.scdn.co/image/ab67616d00001e02bd7e1592d75a9ad8d211debd",
                 "height": 300,
                 "width": 300
               },
               {
-                "url": "https://i.scdn.co/image/ab67616d00004851962307b856c59310b2a6d371",
+                "url": "https://i.scdn.co/image/ab67616d00004851bd7e1592d75a9ad8d211debd",
                 "height": 64,
                 "width": 64
               }
             ]
           },
           "external_urls": {
-            "spotify": "https://open.spotify.com/track/5anjuktgwHsxPOY7QhyoQx"
+            "spotify": "https://open.spotify.com/track/3QsGq1Xd1n8qc9hwSPzQgj"
           }
         },
         {
-          "id": "6AI3ezQ4o3HUoP6Dhudph3",
-          "name": "Not Like Us",
+          "id": "0hFkx6EoIRvNmEVXQIIJtk",
+          "name": "Paaro",
           "artists": [
-            "Kendrick Lamar"
+            "Aditya Rikhari"
           ],
           "album": {
-            "name": "Not Like Us",
-            "release_date": "2024-05-04",
+            "name": "Jaana",
+            "release_date": "2024-12-12",
+            "album_type": "album",
+            "images": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b2730961aa2e7a0495294eb329e3",
+                "height": 640,
+                "width": 640
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e020961aa2e7a0495294eb329e3",
+                "height": 300,
+                "width": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d000048510961aa2e7a0495294eb329e3",
+                "height": 64,
+                "width": 64
+              }
+            ]
+          },
+          "external_urls": {
+            "spotify": "https://open.spotify.com/track/0hFkx6EoIRvNmEVXQIIJtk"
+          }
+        },
+        {
+          "id": "2yWlGEgEfPot0lv3OAjuG3",
+          "name": "Just Keep Watching (From F1® The Movie)",
+          "artists": [
+            "Tate McRae",
+            "F1 The Album"
+          ],
+          "album": {
+            "name": "Just Keep Watching (From F1® The Movie)",
+            "release_date": "2025-05-30",
             "album_type": "single",
             "images": [
               {
-                "url": "https://i.scdn.co/image/ab67616d0000b2731ea0c62b2339cbf493a999ad",
+                "url": "https://i.scdn.co/image/ab67616d0000b27396e4cfdd4c3aa8088685b262",
                 "height": 640,
                 "width": 640
               },
               {
-                "url": "https://i.scdn.co/image/ab67616d00001e021ea0c62b2339cbf493a999ad",
+                "url": "https://i.scdn.co/image/ab67616d00001e0296e4cfdd4c3aa8088685b262",
                 "height": 300,
                 "width": 300
               },
               {
-                "url": "https://i.scdn.co/image/ab67616d000048511ea0c62b2339cbf493a999ad",
+                "url": "https://i.scdn.co/image/ab67616d0000485196e4cfdd4c3aa8088685b262",
                 "height": 64,
                 "width": 64
               }
             ]
           },
           "external_urls": {
-            "spotify": "https://open.spotify.com/track/6AI3ezQ4o3HUoP6Dhudph3"
+            "spotify": "https://open.spotify.com/track/2yWlGEgEfPot0lv3OAjuG3"
           }
         },
         {
-          "id": "7129iqBafaphfc3WPCGC0L",
-          "name": "7 Years",
+          "id": "3IZhkhpuGU7iNWDcQ30nZm",
+          "name": "Dil Kaa Jo Haal Hai",
           "artists": [
-            "Lukas Graham"
+            "Abhijeet",
+            "Shreya Ghoshal"
           ],
           "album": {
-            "name": "Lukas Graham (Blue Album)",
-            "release_date": "2015-06-16",
+            "name": "Besharam",
+            "release_date": "2013-08-27",
             "album_type": "album",
             "images": [
               {
-                "url": "https://i.scdn.co/image/ab67616d0000b2739c2ba50154a64c3c898ec7e2",
+                "url": "https://i.scdn.co/image/ab67616d0000b2732cc631c765d83b108791012e",
                 "height": 640,
                 "width": 640
               },
               {
-                "url": "https://i.scdn.co/image/ab67616d00001e029c2ba50154a64c3c898ec7e2",
+                "url": "https://i.scdn.co/image/ab67616d00001e022cc631c765d83b108791012e",
                 "height": 300,
                 "width": 300
               },
               {
-                "url": "https://i.scdn.co/image/ab67616d000048519c2ba50154a64c3c898ec7e2",
+                "url": "https://i.scdn.co/image/ab67616d000048512cc631c765d83b108791012e",
                 "height": 64,
                 "width": 64
               }
             ]
           },
           "external_urls": {
-            "spotify": "https://open.spotify.com/track/7129iqBafaphfc3WPCGC0L"
+            "spotify": "https://open.spotify.com/track/3IZhkhpuGU7iNWDcQ30nZm"
+          }
+        },
+        {
+          "id": "5sx0m0wBSiIlzsjAdczFMl",
+          "name": "GALL",
+          "artists": [
+            "Kunwarr"
+          ],
+          "album": {
+            "name": "BBB",
+            "release_date": "2025-06-11",
+            "album_type": "single",
+            "images": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b2733a97d8ff7b281ffd9dd82c69",
+                "height": 640,
+                "width": 640
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e023a97d8ff7b281ffd9dd82c69",
+                "height": 300,
+                "width": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d000048513a97d8ff7b281ffd9dd82c69",
+                "height": 64,
+                "width": 64
+              }
+            ]
+          },
+          "external_urls": {
+            "spotify": "https://open.spotify.com/track/5sx0m0wBSiIlzsjAdczFMl"
+          }
+        },
+        {
+          "id": "4sgYmcu4FKb1ZC6qBlxMiw",
+          "name": "Vaaroon",
+          "artists": [
+            "Anand Bhaskar",
+            "Romy",
+            "Ginny Diwan"
+          ],
+          "album": {
+            "name": "Mirzapur",
+            "release_date": "2020-10-21",
+            "album_type": "album",
+            "images": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b273c33c23574fba0d4f630ca8c5",
+                "height": 640,
+                "width": 640
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e02c33c23574fba0d4f630ca8c5",
+                "height": 300,
+                "width": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00004851c33c23574fba0d4f630ca8c5",
+                "height": 64,
+                "width": 64
+              }
+            ]
+          },
+          "external_urls": {
+            "spotify": "https://open.spotify.com/track/4sgYmcu4FKb1ZC6qBlxMiw"
           }
         }
       ],

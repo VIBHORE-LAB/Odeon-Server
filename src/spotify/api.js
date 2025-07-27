@@ -22,7 +22,6 @@ const getTopTracks = async (token, limit = 20, time_range) => {
   console.log("tokenAtTracks", token);
 
   try {
-    console.log("tracksRoutehit");
     const { data } = await axios.get(
       `https://api.spotify.com/v1/me/top/tracks?limit=${limit}&time_range=${time_range}`,
       {
@@ -30,7 +29,6 @@ const getTopTracks = async (token, limit = 20, time_range) => {
       },
     );
 
-    console.log("Spotify top tracks data:", data.items);
 
     return data.items.map((track) => ({
       id: track.id,
@@ -60,7 +58,6 @@ const getTopTracks = async (token, limit = 20, time_range) => {
 
 const getAudioFeatures = async (token, trackId) => {
   try {
-    console.log("DEBUG: getAudioFeatures() called with trackId:", trackId);
     console.log(
       "DEBUG: Authorization Token (first 20 chars):",
       token?.slice(0, 20),
@@ -73,7 +70,6 @@ const getAudioFeatures = async (token, trackId) => {
       },
     );
 
-    console.log("DEBUG: audio_features response:", data);
     return data;
   } catch (err) {
     console.error(
@@ -85,7 +81,6 @@ const getAudioFeatures = async (token, trackId) => {
 };
 
 const getTopArtists = async (token, limit, time_range) => {
-  console.log("tokenAtArtists", token);
   const url = `https://api.spotify.com/v1/me/top/artists?limit=${limit}&time_range=${time_range}`;
   const { data } = await axios.get(url, {
     headers: { Authorization: `Bearer ${token}` },
@@ -207,6 +202,38 @@ const getFollowedArtists = async (token, limit) => {
     throw error;
   }
 };
+const getRandomTracks = async (token, timeRange = "medium_term", limi = 20) => {
+  const topArtists = await getTopArtists(token, 20, timeRange);
+  if (!Array.isArray(topArtists)) return [];
+
+  const randomArtists = topArtists.sort(() => 0.5 - Math.random()).slice(0, 5);
+
+  let pool = [];
+  for (const artist of randomArtists) {
+    try {
+      const { data } = await axios.get(
+        `https://api.spotify.com/v1/artists/${artist.id}/top-tracks?market=IN`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+      if (Array.isArray(data.tracks)) {
+        pool.push(...data.tracks);
+      }
+    } catch (error) {
+      console.error(
+        "Failed fetching recommended tracks for artist",
+        artist.name,
+        error.message,
+      );
+    }
+  }
+
+  const shuffled = pool.sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, 5);
+};
 
 module.exports = {
   getUserProfile,
@@ -220,4 +247,5 @@ module.exports = {
   getPlaylistsCountThisYear,
   getUserPlaylists,
   getFollowedArtists,
+  getRandomTracks,
 };

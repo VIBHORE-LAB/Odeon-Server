@@ -24,13 +24,31 @@ const typeDefs = gql`
     spotify: String!
   }
 
+  type SimplifiedArtist {
+    id: String!
+    name: String!
+  }
+
+  type SimplifiedAlbum {
+    name: String
+    imageUrl: String
+  }
+  type RandomTrack {
+    id: String!
+    name: String!
+    durationMs: Int
+    previewUrl: String
+    album: SimplifiedAlbum
+    artists: [SimplifiedArtist!]!
+  }
+
   type Track {
     id: String!
     name: String!
     artists: [String!]!
     album: Album
     external_urls: ExternalUrls!
-    skipRate: Float
+    previewUrl: String
   }
 
   type ArtistImage {
@@ -104,6 +122,7 @@ const typeDefs = gql`
     userStats(year: Int = 2025): UserStat!
     playlistsStats(limit: Int = 20, offset: Int = 0): [Playlist!]!
     followedArtists(limit: Int = 20, after: String): FollowedArtists!
+    randomRecommendedTracks: [RandomTrack!]!
   }
 `;
 

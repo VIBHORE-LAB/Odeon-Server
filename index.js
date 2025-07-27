@@ -44,12 +44,10 @@ async function refreshSpotifyToken(refreshToken) {
     );
     return data.access_token;
   } catch (err) {
-    console.error("Error refreshing token:", err.response?.data || err.message);
     throw new Error("Failed to refresh token");
   }
 }
 
-// 🔐 Spotify Login
 app.get("/login", (req, res) => {
   const scope = [
     "user-top-read",
@@ -63,6 +61,7 @@ app.get("/login", (req, res) => {
     "user-read-playback-state",
     "user-modify-playback-state",
     "streaming",
+    "app-remote-control",
   ].join(" ");
 
   const authURL = `https://accounts.spotify.com/authorize?response_type=code&client_id=${
@@ -74,7 +73,6 @@ app.get("/login", (req, res) => {
   res.redirect(authURL);
 });
 
-// 🔁 Callback from Spotify
 app.get("/callback", async (req, res) => {
   try {
     const code = req.query.code;
@@ -84,10 +82,8 @@ app.get("/callback", async (req, res) => {
       process.env.FRONTEND_URI || "http://localhost:3000"
     }/auth/callback?access=${access_token}&refresh=${refresh_token}`;
 
-    console.log("Redirecting to:", redirectURL);
     res.redirect(redirectURL);
   } catch (err) {
-    console.error("Error in /callback:", err.response?.data || err.message);
     res.status(500).send("Failed to authenticate with Spotify");
   }
 });
@@ -113,12 +109,51 @@ const startServer = async () => {
     },
   });
 
+  app.get("/refresh-token", async (req, res) => {
+    const refresh_token = req.query.refresh_token;
+    if (!refresh_token) {
+      return res.status(400).json({ error: "Missing refresh token" });
+    }
+
+    const clientId = process.env.SPOTIFY_CLIENT_ID;
+    const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
+    const authHeader = Buffer.from(`${clientId}:${clientSecret}`).toString(
+      "base64",
+    );
+
+    try {
+      const response = await fetch("https://accounts.spotify.com/api/token", {
+        method: "POST",
+        headers: {
+          Authorization: `Basic ${authHeader}`,
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+          grant_type: "refresh_token",
+          refresh_token,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.error) {
+        return res.status(400).json({ error: data.error });
+      }
+
+      res.json({
+        access_token: data.access_token,
+        expires_in: data.expires_in,
+      });
+    } catch (err) {
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  });
+
   await server.start();
   server.applyMiddleware({ app, path: "/graphql", cors: false });
 
   const PORT = process.env.PORT || 4000;
   app.listen(PORT, () => {
-    console.log(`🚀 Server ready at http://localhost:${PORT}/graphql`);
   });
 };
 

@@ -10,7 +10,8 @@ const {
   getArtistsDiscovered,
   getPlaylistsCountThisYear,
   getUserPlaylists,
-  getFollowedArtists
+  getFollowedArtists,
+  getRandomTracks,
 } = require("../spotify/api");
 const { ApolloError } = require("apollo-server-errors");
 const { db } = require("../config/db");
@@ -21,7 +22,6 @@ async function withAutoRefresh(apiCall, accessToken, refreshToken, ...args) {
     return { result: await apiCall(accessToken, ...args), token: accessToken };
   } catch (err) {
     if (err?.response?.status === 401) {
-      console.warn("Access token expired, refreshing...");
       const { access_token: newAccessToken } =
         await refreshSpotifyToken(refreshToken);
       return {
@@ -72,7 +72,6 @@ const resolvers = {
           image: user.image,
         });
       } catch (err) {
-        console.error("Error in me resolver:", err);
         throw new ApolloError("Failed to fetch user profile", "INTERNAL_ERROR");
       }
     },
@@ -99,7 +98,6 @@ const resolvers = {
           timeRange,
         );
 
-        console.log("tracks", tracks);
 
         const mappedTracks = Array.isArray(tracks)
           ? tracks.map((track) => ({
@@ -135,7 +133,6 @@ const resolvers = {
 
         return sanitize(mappedTracks);
       } catch (err) {
-        console.error("Error in topTracks resolver:", err);
         return [];
       }
     },
@@ -167,7 +164,6 @@ const resolvers = {
           duration_ms: features.duration_ms,
         };
       } catch (err) {
-        console.error("Error in analyzeTrack resolver:", err);
         throw new ApolloError("Failed to analyze track", "INTERNAL_ERROR");
       }
     },
@@ -254,23 +250,19 @@ const resolvers = {
         );
       }
     },
-    
-    followedArtists: async (
-      _,
-      { limit = 50 },
-      { token, refreshToken }
-    ) => {
+
+    followedArtists: async (_, { limit = 50 }, { token, refreshToken }) => {
       if (!token || !refreshToken) {
         throw new ApolloError("Not authenticated", "UNAUTHENTICATED");
       }
-    
+
       try {
         const { result } = await withAutoRefresh(
           (tkn) => getFollowedArtists(tkn, limit),
           token,
-          refreshToken
+          refreshToken,
         );
-    
+
         return {
           total: result.artists.total,
           items: result.artists.items,
@@ -278,6 +270,51 @@ const resolvers = {
       } catch (error) {
         console.error("Failed to fetch followed artists:", error);
         throw new ApolloError("Failed to fetch followed artists");
+      }
+    },
+
+    randomRecommendedTracks: async (_, __, { token, refreshToken }) => {
+      if (!token || !refreshToken) {
+        throw new ApolloError("Not authenticated", "UNAUTHENTICATED");
+      }
+
+      try {
+        const tracks = await withAutoRefresh(
+          (tkn) => getRandomTracks(tkn),
+          token,
+          refreshToken,
+        );
+        const actualTracks = Array.isArray(tracks.result)
+          ? tracks.result
+          : tracks;
+
+        if (!Array.isArray(actualTracks)) {
+          console.error("Expected an array, but got:", actualTracks);
+          throw new ApolloError(
+            "Unexpected response format",
+            "INVALID_TRACKS_RESPONSE",
+          );
+        }
+
+        return actualTracks.map((track) => ({
+          id: track.id,
+          name: track.name,
+          durationMs: track.duration_ms,
+          previewUrl: track.preview_url,
+          album: {
+            name: track.album?.name || "Unknown Album",
+            imageUrl: track.album?.images?.[0]?.url || null,
+          },
+          artists: Array.isArray(track.artists)
+            ? track.artists.map((artist) => ({
+                id: artist.id,
+                name: artist.name,
+              }))
+            : [],
+        }));
+      } catch (error) {
+        console.error("Error fetching random tracks:", error);
+        throw new ApolloError("Failed to fetch tracks", "TRACKS_FETCH_FAILED");
       }
     },
 
